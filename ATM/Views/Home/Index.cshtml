@@ -29,3 +29,26 @@
         <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
     </div>
 </div>
+
+@{ var amounts = new List<Decimal> { 100, 25.50m, -40, 275.99m }; }
+
+<ul>
+    @foreach (decimal amount in amounts)
+    {
+        <li>@formatAmount(amount)</li>
+        <text>plain text</text>
+        @:plain text
+    }
+
+</ul>
+
+    @helper formatAmount(decimal amount)
+    {
+        var color = "green";
+        if (amount < 0)
+    {
+        color = "red";
+    }
+    <span style="color:@color">@String.Format("{0:c}", amount)</span>
+
+}
