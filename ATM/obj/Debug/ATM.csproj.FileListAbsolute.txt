@@ -118,3 +118,6 @@ E:\Projects\ATM\ATM\obj\Debug\ATM.csproj.CoreCompileInputs.cache
 E:\Projects\ATM\ATM\obj\Debug\ATM.csproj.CopyComplete
 E:\Projects\ATM\ATM\obj\Debug\ATM.dll
 E:\Projects\ATM\ATM\obj\Debug\ATM.pdb
+E:\Projects\ATM\ATM\obj\Debug\ATM.Migrations.InitialCreate.resources
+E:\Projects\ATM\ATM\obj\Debug\ATM.csproj.GenerateResource.cache
+E:\Projects\ATM\ATM\obj\Debug\ATM.Migrations.AccountNumberChanges.resources
