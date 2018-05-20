@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using ATM.Models;
 using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.Owin;
 
 namespace ATM.Controllers
 {
@@ -20,6 +21,10 @@ namespace ATM.Controllers
             var checkingAccountId = db.CheckingAccounts.Where(m=>m.ApplicationUserId == userId).
                 First().Id;
             ViewBag.CheckingAccountId = checkingAccountId;
+            var manager = HttpContext.GetOwinContext().
+                GetUserManager<ApplicationUserManager>();
+            var user = manager.FindById(userId);
+            ViewBag.Pin = user.Pin;
             return View();
         }
 

@@ -1,4 +1,5 @@
 ﻿using ATM.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace ATM.Controllers
 {
     public class CheckingAccountController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: CheckingAccount
         public ActionResult Index()
         {
@@ -18,13 +20,21 @@ namespace ATM.Controllers
         // GET: CheckingAccount/Details
         public ActionResult Details()
         {
-            var checkingAccount = new CheckingAccount {
-                AccountNumber = "0000123456",
-                FirstName = "Michelle",
-                LastName = "Mao",
-                Balance = 1000
-            };
+            var userId = User.Identity.GetUserId();
+            var checkingAccount = db.CheckingAccounts.Where(m => m.ApplicationUserId ==
+            userId).First();
+            //var checkingAccount = new CheckingAccount {
+            //    AccountNumber = "0000123456",
+            //    FirstName = "Michelle",
+            //    LastName = "Mao",
+            //    Balance = 1000
+            //};
             return View(checkingAccount);
+        }
+
+        public ActionResult List()
+        {
+            return View(db.CheckingAccounts.ToList());
         }
 
         // GET: CheckingAccount/Create
